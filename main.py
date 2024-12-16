@@ -31,12 +31,19 @@ def run(filename: str) -> None:
         list[int], list[int], list[int]: You will return the maximums, averages, and stdevs (in this order).
     """  
     data = []
+    file = open(filename)
+    for line in file: 
+        data.append(line)
+    file.close
 
-    # open file and read into the `data` list
-    ...
+    data = filter_outliers(data)
+    data = filter_nondigits(data)
+    window_average = window_average(data , 6)
+    window_max = window_average(data , 6)
+    stand_dev = window_stddev (data , 6)
 
-    # return all 3 lists
-    ...
+    #
+    
 
 
 if __name__ == "__main__":
